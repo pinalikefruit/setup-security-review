@@ -12,6 +12,13 @@ const apiKey = process.env.NOTION_API_KEY;
 
 const notion = new Client({ auth: apiKey });
 
+// ENV variable
+const title = process.env.TITLE
+const logo = process.env.LOGO
+const platform = process.env.PLATFORM
+const totalPrize = parseInt(process.env.TOTAL_PRIZE)
+const startDate = process.env.START_DATE
+const endDate = process.env.END_DATE
 /**
  * Read from txt
  */
@@ -44,7 +51,7 @@ async function addNotionPageToDatabase(databaseId, pageProperties) {
     icon: {
         type: "external",
         external: {
-            url:  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Fvector-premium%2Flogo-pina_535345-17.jpg%3Fw%3D2000&f=1&nofb=1&ipt=99205bbb645b0c44ebf3247a8959515eb1ee44d58283797e2a7dedc0f2b4a3b8&ipo=images"
+            url:  logo
         },
     },
     properties: pageProperties,
@@ -105,7 +112,7 @@ async function main() {
       title: [
         {
           text: {
-            content: "Example Contest",
+            content: title,
           },
         },
       ],
@@ -117,7 +124,7 @@ async function main() {
     },
     Platform: {
       select: {
-        name: "Codehawks",
+        name: platform,
       },
     },
     Reward: {
@@ -131,12 +138,12 @@ async function main() {
     },
     Date: {
         date: {
-            start: "2024-03-23", // Start date in YYYY-MM-DD format
-            end: "2024-03-30",   // End date in YYYY-MM-DD format
+            start: startDate, // Start date in YYYY-MM-DD format
+            end: endDate,   // End date in YYYY-MM-DD format
           },
     },
     Prize: {
-      number: 0,
+      number: totalPrize,
     },
   };
 

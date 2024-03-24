@@ -3,3 +3,4 @@ node_modules/
 temp_results.csv
 contract_line_counts.txt
 package-lock.json
+.vscode/
