@@ -25,7 +25,7 @@ with open('temp_results.csv', 'r') as csv_file:
                 output.write(f"{contract_name}, {nsloc} \n")
 
             elif row[0] == 'SUM':  # If it's the summary row, capture the total
-                    total_lines = nsloc
+                    total_lines = row[4]
 
         # Write the total lines at the end of the file
         output.write(f"{total_lines}\n")
